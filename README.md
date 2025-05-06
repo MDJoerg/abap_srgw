@@ -1,2 +1,4 @@
-# abap_srgw
-Simple REST Gateway for ABAP Cloud
+# Simple REST Gateway for ABAP Cloud
+
+This project is in prototyping state!
+

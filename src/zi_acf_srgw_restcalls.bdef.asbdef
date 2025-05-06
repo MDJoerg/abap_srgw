@@ -1,0 +1,16 @@
+managed implementation in class zbp_i_acf_srgw_restcalls unique;
+strict ( 2 );
+
+define behavior for ZI_ACF_SRGW_RestCalls alias RestCalls
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+//  create;
+//  update;
+//  delete;
+  field ( readonly ) App, Code;
+
+  static action execute parameter ZD_ACF_SRGW_RestCallExecParam result [1] ZD_ACF_SRGW_RestCallExecResult;
+}

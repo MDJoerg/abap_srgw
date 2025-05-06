@@ -1,0 +1,8 @@
+@Metadata.layer: #CORE
+annotate entity ZC_ACF_SRGW_RestCalls
+  with 
+{
+  @UI.lineItem: [{ label: 'Execute', dataAction: 'execute', type: #FOR_ACTION }]
+  App;
+  
+}

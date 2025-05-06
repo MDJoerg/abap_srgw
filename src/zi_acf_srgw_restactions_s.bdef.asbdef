@@ -1,0 +1,123 @@
+managed with additional save implementation in class ZBP_I_ACF_SRGW_RESTACTIONS_S unique;
+strict;
+with draft;
+define behavior for ZI_ACF_SRGW_RestActions_S alias RestActionsAll
+draft table ZACF_SRGWA__D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare {
+    validation RestActions ~ ValidateDataConsistency;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _RestActions { create ( features : instance ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+  }
+
+define behavior for ZI_ACF_SRGW_RestActions alias RestActions ##UNMAPPED_FIELD
+persistent table ZACF_SRGWA_BC
+draft table ZACF_SRGWA_BC_D
+etag master LocalLastChangedAt
+lock dependent by _RestActionsAll
+authorization dependent by _RestActionsAll
+
+{
+  field ( mandatory : create )
+   App,
+   Code;
+
+  field ( readonly )
+   SingletonID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   App,
+   Code;
+
+  field ( notrigger )
+   SingletonID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) CopyRestActions parameter ZD_ACF_SRGW_CopyRestActionsP [1];
+
+  mapping for ZACF_SRGWA_BC
+  {
+    App = APP;
+    Code = CODE;
+    Active = ACTIVE;
+    Description = DESCRIPTION;
+    Tags = TAGS;
+    Reponsible = REPONSIBLE;
+    ReferenceInfo = REFERENCE_INFO;
+    ActionType = ACTION_TYPE;
+    ActionDestination = ACTION_DESTINATION;
+    ActionUrl = ACTION_URL;
+    ActionForwardApp = ACTION_FORWARD_APP;
+    ActionForwardCode = ACTION_FORWARD_CODE;
+    ActionConfig = ACTION_CONFIG;
+    RequestContentType = REQUEST_CONTENT_TYPE;
+    RequestDdicTemplate = REQUEST_DDIC_TEMPLATE;
+    RequestRawTemplate = REQUEST_RAW_TEMPLATE;
+    ResponseContentType = RESPONSE_CONTENT_TYPE;
+    ResponseDdicTemplate = RESPONSE_DDIC_TEMPLATE;
+    ResponseRawTemplate = RESPONSE_RAW_TEMPLATE;
+    ErrorDefaultStatus = ERROR_DEFAULT_STATUS;
+    ErrorDefaultMessage = ERROR_DEFAULT_MESSAGE;
+    ErrorDefaultResponse = ERROR_DEFAULT_RESPONSE;
+    ParameterInfo = PARAMETER_INFO;
+    Parameter1 = PARAMETER1;
+    Parameter2 = PARAMETER2;
+    Parameter3 = PARAMETER3;
+    Parameter4 = PARAMETER4;
+    Parameter5 = PARAMETER5;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _RestActionsAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateDataConsistency on save { create; update; }
+}

@@ -1,0 +1,229 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'RestActions', 
+    typeNamePlural: 'RestActionss', 
+    title: {
+      type: #STANDARD, 
+      label: 'REST Actions', 
+      value: 'App'
+    }
+  }
+}
+annotate view ZI_ACF_SRGW_RestActions with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'CopyRestActions', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_ACF_SRGW_RestActions', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'REST Actions', 
+    position: 1 
+  } ]
+  App;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Code;
+  
+  @UI.identification: [ {
+    position: 3 
+  } ]
+  @UI.lineItem: [ {
+    position: 3 
+  } ]
+  Active;
+  
+  @UI.identification: [ {
+    position: 4 , 
+    label: 'Description'
+  } ]
+  @UI.lineItem: [ {
+    position: 4 , 
+    label: 'Description'
+  } ]
+  Description;
+  
+  @UI.identification: [ {
+    position: 5 , 
+    label: 'Tags'
+  } ]
+  @UI.lineItem: [ {
+    position: 5 , 
+    label: 'Tags'
+  } ]
+  Tags;
+  
+  @UI.identification: [ {
+    position: 6 , 
+    label: 'Reponsible'
+  } ]
+  @UI.lineItem: [ {
+    position: 6 , 
+    label: 'Reponsible'
+  } ]
+  Reponsible;
+  
+  @UI.identification: [ {
+    position: 7 , 
+    label: 'ReferenceInfo'
+  } ]
+  @UI.lineItem: [ {
+    position: 7 , 
+    label: 'ReferenceInfo'
+  } ]
+  ReferenceInfo;
+  
+  @UI.identification: [ {
+    position: 8 , 
+    label: 'ActionType'
+  } ]
+  @UI.lineItem: [ {
+    position: 8 , 
+    label: 'ActionType'
+  } ]
+  ActionType;
+  
+  @UI.identification: [ {
+    position: 9 , 
+    label: 'ActionDestination'
+  } ]
+  @UI.lineItem: [ {
+    position: 9 , 
+    label: 'ActionDestination'
+  } ]
+  ActionDestination;
+  
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'ActionUrl'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'ActionUrl'
+  } ]
+  ActionUrl;
+  
+  @UI.identification: [ {
+    position: 11 , 
+    label: 'ActionForwardApp'
+  } ]
+  ActionForwardApp;
+  
+  @UI.identification: [ {
+    position: 12 , 
+    label: 'ActionForwardCode'
+  } ]
+  ActionForwardCode;
+  
+  @UI.identification: [ {
+    position: 13 , 
+    label: 'ActionConfig'
+  } ]
+  ActionConfig;
+  
+  @UI.identification: [ {
+    position: 14 , 
+    label: 'RequestContentType'
+  } ]
+  RequestContentType;
+  
+  @UI.identification: [ {
+    position: 15 , 
+    label: 'RequestDdicTemplate'
+  } ]
+  RequestDdicTemplate;
+  
+  @UI.identification: [ {
+    position: 16 , 
+    label: 'RequestRawTemplate'
+  } ]
+  RequestRawTemplate;
+  
+  @UI.identification: [ {
+    position: 17 , 
+    label: 'ResponseContentType'
+  } ]
+  ResponseContentType;
+  
+  @UI.identification: [ {
+    position: 18 , 
+    label: 'ResponseDdicTemplate'
+  } ]
+  ResponseDdicTemplate;
+  
+  @UI.identification: [ {
+    position: 19 , 
+    label: 'ResponseRawTemplate'
+  } ]
+  ResponseRawTemplate;
+  
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ErrorDefaultStatus'
+  } ]
+  ErrorDefaultStatus;
+  
+  @UI.identification: [ {
+    position: 21 , 
+    label: 'ErrorDefaultMessage'
+  } ]
+  ErrorDefaultMessage;
+  
+  @UI.identification: [ {
+    position: 22 , 
+    label: 'ErrorDefaultResponse'
+  } ]
+  ErrorDefaultResponse;
+  
+  @UI.identification: [ {
+    position: 23 , 
+    label: 'ParameterInfo'
+  } ]
+  ParameterInfo;
+  
+  @UI.identification: [ {
+    position: 24 , 
+    label: 'Parameter1'
+  } ]
+  Parameter1;
+  
+  @UI.identification: [ {
+    position: 25 , 
+    label: 'Parameter2'
+  } ]
+  Parameter2;
+  
+  @UI.identification: [ {
+    position: 26 , 
+    label: 'Parameter3'
+  } ]
+  Parameter3;
+  
+  @UI.identification: [ {
+    position: 27 , 
+    label: 'Parameter4'
+  } ]
+  Parameter4;
+  
+  @UI.identification: [ {
+    position: 28 , 
+    label: 'Parameter5'
+  } ]
+  Parameter5;
+}

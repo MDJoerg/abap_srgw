@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition - Rest Calls'
+define service ZUI_ACF_SRGW_RestCalls {
+  expose ZC_ACF_SRGW_RestCalls as RestCalls;
+}
